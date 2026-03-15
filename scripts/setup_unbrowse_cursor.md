@@ -90,3 +90,6 @@ npx unbrowse setup --skip-browser
 
 - **Skill not showing in Cursor**  
   Ensure you ran `npx -y skills add unbrowse-ai/unbrowse --yes --agent cursor` from the project root; the skill lives under `.agents/skills/unbrowse`. Restart Cursor if needed.
+
+- **"Server failed to start" / ERR_UNSUPPORTED_ESM_URL_SCHEME (protocol 'c:') on Windows**  
+  The Unbrowse server can hit a Node.js ESM bug on Windows where `C:\` paths are not accepted. Log: `%USERPROFILE%\.unbrowse\logs\server-autostart.log`. Workarounds: run Unbrowse from WSL, or use a different drive/path; or wait for an upstream fix. The CLI and Cursor skill may still work for resolve/execute if the server is started from a context that avoids this (e.g. WSL).
