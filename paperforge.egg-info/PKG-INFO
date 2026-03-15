@@ -1,3 +1,28 @@
+Metadata-Version: 2.4
+Name: paperforge
+Version: 0.1.0
+Summary: Bittensor subnet: CS research papers → working code implementations
+Author: PaperForge Team
+License: MIT
+Keywords: bittensor,subnet,research,implementation,cs
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Developers
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Requires-Python: >=3.10
+Description-Content-Type: text/markdown
+Requires-Dist: fastapi>=0.109.0
+Requires-Dist: uvicorn>=0.27.0
+Requires-Dist: pydantic>=2.0
+Requires-Dist: pymupdf>=1.24.0
+Requires-Dist: httpx>=0.26.0
+Provides-Extra: bittensor
+Requires-Dist: bittensor>=7.0.0; extra == "bittensor"
+Provides-Extra: dev
+Requires-Dist: pytest>=7.0; extra == "dev"
+Requires-Dist: pytest-asyncio>=0.23; extra == "dev"
+Requires-Dist: ruff>=0.2; extra == "dev"
+
 # PaperForge
 
 > **CS research papers → working code implementations.** A Bittensor subnet where miners implement algorithms from papers and validators score by execution—no human judge, no LLM reviewer.
@@ -8,18 +33,14 @@ See [ARCHITECTURE.md](ARCHITECTURE.md) for the full system design, component lay
 
 ## Quick Start
 
-See **[RUN_AND_TEST.md](RUN_AND_TEST.md)** for full run/test steps.
-
-```powershell
+```bash
 # Install (no Bittensor required for local testing)
 pip install -e .
 pip install numpy
 
-# Local validation test (miner vs validator)
-python run_local_test.py
-
 # Run API (task pool, query by arXiv ID)
 paperforge-api
+# or: uvicorn paperforge.api.app:app --reload
 
 # Miner template
 cd miner_template && python miner.py
@@ -64,12 +85,6 @@ Bittensor requires **Rust** (for the `bittensor-drand` dependency). If `pip inst
 
 For testing on the real Bittensor testnet/mainnet (wallets, registration, running miner/validator nodes), see **[REAL_TESTING.md](REAL_TESTING.md)** for what you need and step-by-step instructions.
 
-## Agentic funding and coordination
-
-How PaperForge fits and extends toward **agents that take action** (vote, move funds, evaluate work, pay for services, coordinate), **explainable reasoning**, and **x402 + multi-agent coordination**: see **[AGENTIC_FUNDING_AND_COORDINATION.md](AGENTIC_FUNDING_AND_COORDINATION.md)**.
-
-**Solana AI** (agent payouts on Solana) and **Unbrowse** (agents fetch tasks/papers by intent): see **[SOLANA_AI_AND_UNBROWSE.md](SOLANA_AI_AND_UNBROWSE.md)** and optional `paperforge.agents` (Unbrowse fetch, Solana payout stubs).
-
 ## Hackathon Deliverables
 
 - [x] Architecture document
@@ -78,4 +93,3 @@ How PaperForge fits and extends toward **agents that take action** (vote, move f
 - [x] Sample task (Word2Vec skip-gram)
 - [ ] Live testnet demo (Bittensor testnet)
 - [ ] 3 implemented paper tasks with ground truth
-# paperforge

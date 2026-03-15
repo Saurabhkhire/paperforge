@@ -1,0 +1,50 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "paperforge"
+version = "0.1.0"
+description = "Bittensor subnet: CS research papers → working code implementations"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "PaperForge Team" }]
+keywords = ["bittensor", "subnet", "research", "implementation", "cs"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+]
+
+dependencies = [
+    "fastapi>=0.109.0",
+    "uvicorn>=0.27.0",
+    "pydantic>=2.0",
+    "pymupdf>=1.24.0",
+    "httpx>=0.26.0",
+]
+
+[project.optional-dependencies]
+bittensor = [
+    "bittensor>=7.0.0",
+]
+dev = [
+    "pytest>=7.0",
+    "pytest-asyncio>=0.23",
+    "ruff>=0.2",
+]
+
+[project.scripts]
+paperforge-miner = "paperforge.bittensor.miner_node:main"
+paperforge-validator = "paperforge.bittensor.validator_node:main"
+paperforge-api = "paperforge.api:run_api"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["paperforge*"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"

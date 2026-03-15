@@ -1,0 +1,4 @@
+[console_scripts]
+paperforge-api = paperforge.api:run_api
+paperforge-miner = paperforge.bittensor.miner_node:main
+paperforge-validator = paperforge.bittensor.validator_node:main

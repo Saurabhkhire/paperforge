@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "skills": {
+    "unbrowse": {
+      "source": "unbrowse-ai/unbrowse",
+      "sourceType": "github",
+      "computedHash": "56258e883745ce54a32d16b82f36384413693b5c7dc92ac04497364f9d9e61c6"
+    }
+  }
+}

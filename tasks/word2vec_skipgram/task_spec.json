@@ -1,0 +1,11 @@
+{
+  "paper_id": "1301.3781",
+  "paper_pdf_url": "https://arxiv.org/pdf/1301.3781.pdf",
+  "algorithm_name": "skip_gram_negative_sampling",
+  "language": "python3.10",
+  "function_signature": "def train_step(center_idx: int, context_idx: int, neg_indices: list[int], W: np.ndarray, W_prime: np.ndarray) -> tuple[np.ndarray, np.ndarray, float]",
+  "sample_input": "{\"center\": 0, \"context\": 1, \"neg\": [2, 3, 4], \"vocab_size\": 10, \"dim\": 5}",
+  "sample_output": "{\"loss\": 0.5, \"W_updated\": true, \"W_prime_updated\": true}",
+  "performance_target": "Loss decreases over 1000 training steps on toy corpus. Word similarity within 8% of Table 1.",
+  "description": "Implement the skip-gram negative sampling training step from Mikolov et al. 2013."
+}
